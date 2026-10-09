@@ -1,0 +1,1727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>MajiTrack | Water Business Management</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- MAJITRACK PWA MANIFEST -->
+<link rel="manifest" href="./manifest.json">
+
+<!-- MOBILE BROWSER THEME COLOR -->
+<meta name="theme-color" content="#0878e8">
+</head>
+
+<body>
+
+    <main class="login-page">
+
+        <div class="login-card">
+
+            <div class="brand">
+                <div class="water-icon">💧</div>
+
+                <h1>MajiTrack</h1>
+
+                <p>Water Business Management</p>
+            </div>
+
+            <form id="loginForm">
+
+                <div class="form-group">
+                    <label for="username">Username</label>
+
+                    <input
+                        type="text"
+                        id="username"
+                        placeholder="Enter username"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter password"
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="login-btn">
+                    LOGIN
+                </button>
+
+            </form>
+
+            <div class="connection-status">
+                <span class="status-dot"></span>
+                <span id="connectionText">Checking connection...</span>
+            </div>
+
+            <p class="app-footer">
+                Powered by Code Craft Tanzania
+            </p>
+
+        </div>
+
+    </main>
+    <!-- ==========================================
+     ATTENDANT DASHBOARD
+========================================== -->
+
+<main class="dashboard-page" id="dashboardPage">
+
+    <header class="app-header">
+        <div>
+            <h2>MajiTrack</h2>
+            <p>Attendant Dashboard</p>
+        </div>
+
+        <div class="header-status">
+            <span class="dashboard-status-dot"></span>
+            <span id="dashboardConnection">Online</span>
+        </div>
+    </header>
+
+    <div class="dashboard-container">
+
+        <section class="welcome-section">
+            <div>
+                <p>Welcome,</p>
+                <h2 id="attendantName">Attendant</h2>
+            </div>
+
+            <button id="logoutBtn" class="logout-btn">
+                Logout
+            </button>
+        </section>
+
+
+        <!-- TODAY'S SUMMARY -->
+
+        <section class="summary-section">
+
+            <h2>Today's Summary</h2>
+
+            <div class="summary-grid">
+
+                <div class="summary-card">
+                    <span>Total Sales</span>
+                    <strong id="totalSales">TZS 0</strong>
+                </div>
+
+                <div class="summary-card">
+
+    <span>Credit Sales</span>
+
+    <strong id="creditSales">
+        TZS 0
+    </strong>
+
+</div>
+
+<div class="summary-card">
+
+    <span>Cash Received</span>
+
+    <strong id="cashReceived">
+        TZS 0
+    </strong>
+
+</div>
+
+<div class="summary-card">
+
+    <span>Outstanding Debt</span>
+
+    <strong id="dashboardOutstandingDebt">
+        TZS 0
+    </strong>
+
+</div>
+
+                <div class="summary-card">
+                    <span>10 L Sold</span>
+                    <strong id="tenLitresCount">0</strong>
+                </div>
+
+                <div class="summary-card">
+                    <span>20 L Sold</span>
+                    <strong id="twentyLitresCount">0</strong>
+                </div>
+
+                <div class="summary-card">
+                    <span>Total Litres</span>
+                    <strong id="totalLitres">0 L</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- QUICK SALES -->
+
+        <section class="sales-section">
+
+            <h2>Quick Sale</h2>
+
+            <div class="sale-buttons">
+
+                <button
+                    class="sale-btn ten-litre-btn"
+                    id="sell10Btn"
+                >
+                    <span class="sale-icon">💧</span>
+                    <strong>SELL 10 L</strong>
+                    <span>TZS 100</span>
+                </button>
+
+
+                <button
+                    class="sale-btn twenty-litre-btn"
+                    id="sell20Btn"
+                >
+                    <span class="sale-icon">💧</span>
+                    <strong>SELL 20 L</strong>
+                    <span>TZS 100</span>
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- OTHER ACTIONS -->
+
+        <section class="action-section">
+
+            <button
+    class="action-btn credit-btn"
+    id="creditSaleBtn"
+>
+    Sell on Credit
+</button>
+            <button
+    class="action-btn payment-btn"
+    id="receivePaymentBtn"
+>
+    Receive Payment
+</button>
+
+            <button
+    class="action-btn  -btn"
+    id="electricityBtn"
+>
+    Electricity
+</button>
+   
+<button
+    type="button"
+    class="action-btn water-usage-btn"
+    id="waterUsageBtn"
+>
+    Water Usage
+</button>
+
+<button
+    class="action-btn customers-btn"
+    id="customersBtn"
+>
+    Customers
+</button>
+
+        </section>
+
+<!-- RECENT SALES -->
+
+<section class="recent-sales-section">
+
+    <div class="section-heading">
+
+        <h2>Recent Sales</h2>
+
+        <span id="transactionCount">
+            0 transactions
+        </span>
+
+    </div>
+
+
+    <div id="recentSalesList" class="recent-sales-list">
+
+        <p class="empty-message">
+            No sales recorded yet.
+        </p>
+
+    </div>
+
+</section>
+    </div>
+
+</main>
+
+</main>
+
+
+<!-- ==========================================
+     CUSTOMERS & DEBTS SCREEN
+========================================== -->
+
+<main class="customers-page" id="customersPage">
+
+    <header class="app-header">
+
+        <div>
+            <h2>MajiTrack</h2>
+            <p>Customers & Debts</p>
+        </div>
+
+        <button class="back-btn" id="backToDashboardBtn">
+            ← Back
+        </button>
+
+    </header>
+
+
+    <div class="customers-container">
+
+        <section class="customers-top">
+
+            <div>
+                <p class="page-label">
+                    Customer Management
+                </p>
+
+                <h1>Customers & Debts</h1>
+
+                <p class="page-description">
+                    Manage customers who buy water on credit
+                    and track their outstanding balances.
+                </p>
+            </div>
+
+
+            <button class="add-customer-btn" id="addCustomerBtn">
+                + Add Customer
+            </button>
+
+        </section>
+
+
+        <!-- DEBT SUMMARY -->
+
+        <section class="debt-summary">
+
+            <div class="debt-card">
+
+                <span>Total Customers</span>
+
+                <strong id="totalCustomers">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="debt-card">
+
+                <span>Customers Owing</span>
+
+                <strong id="customersOwing">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="debt-card">
+
+                <span>Total Outstanding Debt</span>
+
+                <strong id="totalOutstandingDebt">
+                    TZS 0
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <!-- CUSTOMER LIST -->
+
+        <section class="customer-list-section">
+
+            <div class="section-heading">
+
+                <h2>Customer List</h2>
+
+                <span id="customerCount">
+                    0 customers
+                </span>
+
+            </div>
+
+
+            <div class="customer-list" id="customerList">
+
+                <p class="empty-message">
+                    No customers added yet.
+                </p>
+
+            </div>
+
+        </section>
+
+<!-- ==========================================
+     ADD CUSTOMER FORM
+========================================== -->
+
+<div class="customer-modal" id="customerModal">
+
+    <div class="customer-form-card">
+
+        <div class="customer-form-header">
+
+            <div>
+                <h2>Add Customer</h2>
+                <p>Create a customer for credit sales.</p>
+            </div>
+
+            <button
+                type="button"
+                class="close-customer-form"
+                id="closeCustomerForm"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="customerForm">
+
+            <div class="form-group">
+
+                <label for="customerName">
+                    Customer Name
+                </label>
+
+                <input
+                    type="text"
+                    id="customerName"
+                    placeholder="Enter customer name"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="customerPhone">
+                    Phone Number
+                </label>
+
+                <input
+                    type="tel"
+                    id="customerPhone"
+                    placeholder="Example: 0712 345 678"
+                >
+
+            </div>
+
+
+            <div class="customer-form-actions">
+
+                <button
+                    type="button"
+                    class="cancel-customer-btn"
+                    id="cancelCustomerBtn"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="save-customer-btn"
+                >
+                    Save Customer
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+    </div>
+
+</main>
+
+<!-- OWNER DASHBOARD -->
+<main class="owner-page" id="ownerPage">
+
+    <header class="app-header">
+
+        <div>
+            <h2>MajiTrack</h2>
+            <span>Owner Dashboard</span>
+        </div>
+
+        <button
+            type="button"
+            class="back-btn"
+            id="backFromOwnerBtn"
+        >
+            Back
+        </button>
+
+    </header>
+
+
+    <div class="dashboard-container">
+
+        <div class="welcome-section">
+
+            <div>
+                <p class="page-label">
+                    BUSINESS OVERVIEW
+                </p>
+
+                <h1>Owner Dashboard</h1>
+
+                <p>
+                    Financial overview of the water business.
+                </p>
+            </div>
+
+        </div>
+
+
+        <section class="summary-grid">
+
+            <div class="summary-card">
+                <span>Total Sales</span>
+                <strong id="ownerTotalSales">
+                    TZS 0
+                </strong>
+            </div>
+
+            <div class="summary-card">
+                <span>Cash Received</span>
+                <strong id="ownerCashReceived">
+                    TZS 0
+                </strong>
+            </div>
+
+            <div class="summary-card">
+                <span>Credit Sales</span>
+                <strong id="ownerCreditSales">
+                    TZS 0
+                </strong>
+            </div>
+
+            <div class="summary-card">
+                <span>Outstanding Debt</span>
+                <strong id="ownerOutstandingDebt">
+                    TZS 0
+                </strong>
+            </div>
+
+            <div class="summary-card">
+                <span>Electricity Cost</span>
+                <strong id="ownerElectricityCost">
+                    TZS 0
+                </strong>
+            </div>
+
+            <div class="summary-card">
+                <span>Operating Balance</span>
+                <strong id="ownerOperatingBalance">
+                    TZS 0
+                </strong>
+            </div>
+
+<!-- OWNER WATER USAGE SUMMARY -->
+
+<div class="summary-card">
+
+    <span>Today's Water Usage</span>
+
+    <strong id="ownerTodayWaterUsage">
+        0 Units
+    </strong>
+
+</div>
+
+<div class="summary-card">
+
+    <span>Total Water Usage</span>
+
+    <strong id="ownerTotalWaterUsage">
+        0 Units
+    </strong>
+
+</div>
+
+        </section>
+
+<section class="owner-management-section">
+
+    <div class="section-heading">
+        <div>
+            <p class="page-label">
+                MANAGEMENT
+            </p>
+
+            <h2>Business Management</h2>
+
+            <p>
+                Manage business settings and administrative tools.
+            </p>
+        </div>
+    </div>
+
+    <button
+        type="button"
+        class="owner-settings-btn"
+        id="ownerSettingsBtn"
+    >
+        <div class="owner-settings-icon">
+            ⚙
+        </div>
+
+        <div class="owner-settings-text">
+            <strong>Settings</strong>
+            <span>
+                Business settings and data management
+            </span>
+        </div>
+
+        <span class="owner-settings-arrow">
+            ›
+        </span>
+    </button>
+
+</section>
+
+    </div>
+
+</main>
+
+<!-- ==========================================
+     OWNER SETTINGS PAGE
+========================================== -->
+
+<main class="owner-settings-page" id="ownerSettingsPage">
+
+    <header class="app-header">
+
+        <div>
+            <h2>MajiTrack</h2>
+            <span>Owner Settings</span>
+        </div>
+
+        <button
+            type="button"
+            class="back-btn"
+            id="backFromSettingsBtn"
+        >
+            Back
+        </button>
+
+    </header>
+
+
+    <div class="dashboard-container">
+
+        <div class="welcome-section">
+
+            <div>
+                <p class="page-label">
+                    SETTINGS
+                </p>
+
+                <h1>Business Settings</h1>
+
+                <p>
+                    Manage administrative settings and business data.
+                </p>
+            </div>
+
+        </div>
+
+
+        <section class="data-management-section">
+
+            <div class="section-heading">
+                <div>
+                    <p class="page-label">
+                        DATA MANAGEMENT
+                    </p>
+
+                    <h2>Business Data</h2>
+
+                    <p>
+                        Manage the records stored by MajiTrack.
+                    </p>
+                </div>
+            </div>
+
+<!-- BUSINESS DATA BACKUP -->
+
+<div class="data-export-section">
+
+    <div class="data-export-info">
+
+        <strong>Export Business Data</strong>
+
+        <span>
+            Download a backup of sales, customers,
+            debt payments, electricity records,
+            and water meter readings.
+        </span>
+
+    </div>
+
+    <button
+        type="button"
+        class="export-business-btn"
+        id="exportBusinessBtn"
+    >
+        Export Data
+    </button>
+
+</div>
+
+<!-- RESTORE BUSINESS DATA -->
+
+<div class="data-export-section">
+
+    <div class="data-export-info">
+
+        <strong>Restore Business Data</strong>
+
+        <span>
+            Restore business records from a previously
+            exported MajiTrack backup file.
+        </span>
+
+    </div>
+
+    <button
+        type="button"
+        class="export-business-btn"
+        id="restoreBusinessBtn"
+    >
+        Restore Data
+    </button>
+
+    <input
+        type="file"
+        id="restoreBusinessFile"
+        accept=".json,application/json"
+        hidden
+    >
+
+</div>
+
+            <div class="danger-zone">
+
+                <div class="danger-zone-info">
+
+                    <strong>Reset Business Data</strong>
+
+                    <span>
+                        Permanently delete sales, customers,
+                        debt payments and electricity records.
+                    </span>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="reset-business-btn"
+                    id="resetBusinessBtn"
+                >
+                    Reset Business Data
+                </button>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+<!-- ==========================================
+     RESET BUSINESS DATA MODAL
+========================================== -->
+
+<div class="reset-data-modal" id="resetDataModal">
+
+    <div class="reset-data-box">
+
+        <div class="reset-warning-icon">
+            !
+        </div>
+
+        <h2>Reset Business Data?</h2>
+
+        <p>
+    This will permanently delete all sales,
+    customers, debt payments, electricity purchases,
+    daily electricity usage records, and water meter
+    readings.
+</p>
+
+        <div class="reset-warning-message">
+            This action cannot be undone.
+        </div>
+
+        <label for="resetConfirmationInput">
+            Type <strong>RESET</strong> to confirm
+        </label>
+
+        <input
+            type="text"
+            id="resetConfirmationInput"
+            placeholder="Type RESET"
+            autocomplete="off"
+        >
+
+        <div class="reset-modal-actions">
+
+            <button
+                type="button"
+                class="cancel-reset-btn"
+                id="cancelResetBtn"
+            >
+                Cancel
+            </button>
+
+            <button
+                type="button"
+                class="confirm-reset-btn"
+                id="confirmResetBtn"
+                disabled
+            >
+                Reset All Data
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ELECTRICITY PAGE -->
+<main class="electricity-page" id="electricityPage">
+
+    <header class="app-header">
+        <div>
+            <h2>MajiTrack</h2>
+            <span>Electricity</span>
+        </div>
+
+        <button
+            type="button"
+            class="back-btn"
+            id="backFromElectricityBtn"
+        >
+            Back
+        </button>
+    </header>
+
+    <div class="customers-container">
+
+        <div class="customers-top">
+
+            <div>
+                <p class="page-label">
+                    OPERATING EXPENSE
+                </p>
+
+                <h1>Electricity</h1>
+
+                <p class="page-description">
+                    Record electricity units purchased
+                    and the amount paid.
+                </p>
+            </div>
+
+            <button
+                type="button"
+                class="add-customer-btn"
+                id="addElectricityBtn"
+            >
+                + Record Purchase
+            </button>
+
+        </div>
+<!-- ELECTRICITY SUMMARY -->
+<div class="debt-summary">
+
+    <div class="debt-card">
+        <span>Total Units Purchased</span>
+
+        <strong id="totalElectricityUnits">
+            0
+        </strong>
+    </div>
+
+    <div class="debt-card">
+        <span>Total Electricity Cost</span>
+
+        <strong id="totalElectricityCost">
+            TZS 0
+        </strong>
+    </div>
+
+</div>
+
+<!-- DAILY ELECTRICITY USAGE -->
+<section class="electricity-usage-section">
+
+    <div class="section-heading">
+
+        <div>
+            <h2>Daily Electricity Usage</h2>
+
+            <p class="page-description">
+                Record the electricity units used at the end of each day.
+            </p>
+        </div>
+
+        <button
+            type="button"
+            class="add-customer-btn"
+            id="recordElectricityUsageBtn"
+        >
+            + Record Daily Usage
+        </button>
+
+    </div>
+
+    <div class="debt-summary">
+
+        <div class="debt-card">
+            <span>Today's Usage</span>
+
+            <strong id="todayElectricityUsage">
+                0 Units
+            </strong>
+        </div>
+
+        <div class="debt-card">
+            <span>Total Units Used</span>
+
+            <strong id="totalElectricityUsed">
+                0 Units
+            </strong>
+        </div>
+
+    </div>
+
+    <div class="customer-list-section">
+
+        <div class="section-heading">
+
+            <h2>Daily Usage History</h2>
+
+            <span id="electricityUsageCount">
+                0 days recorded
+            </span>
+
+        </div>
+
+        <div
+            class="customer-list"
+            id="electricityUsageList"
+        >
+            <p class="empty-message">
+                No daily electricity usage recorded yet.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ELECTRICITY PURCHASE HISTORY -->
+<section class="customer-list-section">
+
+    <div class="section-heading">
+
+        <h2>Purchase History</h2>
+
+        <span id="electricityPurchaseCount">
+            0 purchases
+        </span>
+
+    </div>
+
+    <div
+        class="customer-list"
+        id="electricityPurchaseList"
+    >
+        <p class="empty-message">
+            No electricity purchases recorded yet.
+        </p>
+    </div>
+
+</section>
+
+    </div>
+
+</main>
+
+<!-- ==========================================
+     WATER USAGE PAGE
+========================================== -->
+
+<main class="electricity-page" id="waterUsagePage">
+
+    <header class="app-header">
+
+        <div>
+            <h2>MajiTrack</h2>
+            <span>Water Usage</span>
+        </div>
+
+        <button
+            type="button"
+            class="back-btn"
+            id="backFromWaterUsageBtn"
+        >
+            Back
+        </button>
+
+    </header>
+
+
+    <div class="dashboard-container">
+
+        <div class="welcome-section">
+
+            <div>
+                <p class="page-label">
+                    WATER METER
+                </p>
+
+                <h1>Daily Water Usage</h1>
+
+                <p>
+                    Track daily water consumption from meter readings.
+                </p>
+            </div>
+
+            <button
+                type="button"
+                class="add-customer-btn"
+                id="recordWaterUsageBtn"
+            >
+                + Record Meter Reading
+            </button>
+
+        </div>
+
+
+        <section class="summary-grid">
+
+            <div class="summary-card">
+
+                <span>Today's Water Usage</span>
+
+                <strong id="todayWaterUsage">
+                    0 Units
+                </strong>
+
+            </div>
+
+            <div class="summary-card">
+
+                <span>Total Water Usage</span>
+
+                <strong id="totalWaterUsage">
+                    0 Units
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <section class="customer-list-section">
+
+            <div class="section-heading">
+
+                <h2>Daily Meter History</h2>
+
+                <span id="waterUsageCount">
+                    0 records
+                </span>
+
+            </div>
+
+            <div
+                class="customer-list"
+                id="waterUsageList"
+            >
+                <p class="empty-message">
+                    No daily water usage recorded yet.
+                </p>
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+<!-- QUICK CASH SALE FORM -->
+<div class="quick-sale-modal" id="quickSaleModal">
+
+    <div class="customer-form-card">
+
+        <div class="customer-form-header">
+
+            <div>
+                <h2>Record Cash Sale</h2>
+
+                <p id="quickSaleDescription">
+                    Select quantity.
+                </p>
+            </div>
+
+            <button
+                type="button"
+                class="close-customer-form"
+                id="closeQuickSale"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="saleQuantity">
+                Quantity
+            </label>
+
+            <input
+                type="number"
+                id="saleQuantity"
+                min="1"
+                value="1"
+                required
+            >
+
+        </div>
+
+
+        <div class="quick-quantity-buttons cash-quantity-buttons">
+
+    <button type="button" data-quantity="4">
+        4
+    </button>
+
+    <button type="button" data-quantity="6">
+        6
+    </button>
+
+    <button type="button" data-quantity="12">
+        12
+    </button>
+
+</div>
+
+
+        <div class="quick-sale-summary">
+
+            <div>
+                <span>Total Litres</span>
+                <strong id="quickSaleLitres">
+                    10 L
+                </strong>
+            </div>
+
+            <div>
+                <span>Total Amount</span>
+                <strong id="quickSaleAmount">
+                    TZS 100
+                </strong>
+            </div>
+
+        </div>
+
+
+        <div class="customer-form-actions">
+
+            <button
+                type="button"
+                class="cancel-customer-btn"
+                id="cancelQuickSale"
+            >
+                Cancel
+            </button>
+
+            <button
+                type="button"
+                class="save-customer-btn"
+                id="recordQuickSale"
+            >
+                Record Sale
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ==========================================
+     DAILY WATER METER READING FORM
+========================================== -->
+
+<div class="electricity-modal" id="waterUsageModal">
+
+    <div class="customer-form-card">
+
+        <div class="customer-form-header">
+
+            <div>
+                <h2>Record Water Meter Reading</h2>
+
+                <p>
+                    Enter opening and closing meter readings.
+                </p>
+            </div>
+
+            <button
+                type="button"
+                class="close-customer-form"
+                id="closeWaterUsageForm"
+            >
+                ×
+            </button>
+
+        </div>
+
+        <form id="waterUsageForm">
+
+            <div class="form-group">
+
+                <label for="waterUsageDate">
+                    Date
+                </label>
+
+                <input
+                    type="date"
+                    id="waterUsageDate"
+                    required
+                >
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="waterOpeningReading">
+                    Opening Meter Reading
+                </label>
+
+                <input
+                    type="number"
+                    id="waterOpeningReading"
+                    min="0"
+                    step="0.01"
+                    placeholder="Example: 1250"
+                    required
+                >
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="waterClosingReading">
+                    Closing Meter Reading
+                </label>
+
+                <input
+                    type="number"
+                    id="waterClosingReading"
+                    min="0"
+                    step="0.01"
+                    placeholder="Example: 1285"
+                    required
+                >
+
+            </div>
+
+            <div class="quick-sale-summary">
+
+                <div>
+                    <span>Opening Reading</span>
+                    <strong id="waterOpeningPreview">
+                        0
+                    </strong>
+                </div>
+
+                <div>
+                    <span>Water Used</span>
+                    <strong id="waterUsagePreview">
+                        0 Units
+                    </strong>
+                </div>
+
+            </div>
+
+            <div class="customer-form-actions">
+
+                <button
+                    type="button"
+                    class="cancel-customer-btn"
+                    id="cancelWaterUsageBtn"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="save-customer-btn"
+                >
+                    Save Meter Reading
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<!-- DAILY ELECTRICITY USAGE FORM -->
+<div class="electricity-modal" id="electricityUsageModal">
+
+    <div class="customer-form-card">
+
+        <div class="customer-form-header">
+
+            <div>
+                <h2>Record Daily Electricity Usage</h2>
+
+                <p>
+                    Enter the electricity units used today.
+                </p>
+            </div>
+
+            <button
+                type="button"
+                class="close-customer-form"
+                id="closeElectricityUsageForm"
+            >
+                ×
+            </button>
+
+        </div>
+
+        <form id="electricityUsageForm">
+
+            <div class="form-group">
+
+                <label for="electricityUnitsUsed">
+                    Units Used
+                </label>
+
+                <input
+                    type="number"
+                    id="electricityUnitsUsed"
+                    min="0.01"
+                    step="0.01"
+                    placeholder="Example: 13.5"
+                    required
+                >
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="electricityUsageDate">
+                    Date
+                </label>
+
+                <input
+                    type="date"
+                    id="electricityUsageDate"
+                    required
+                >
+
+            </div>
+
+            <div class="customer-form-actions">
+
+                <button
+                    type="button"
+                    class="cancel-customer-btn"
+                    id="cancelElectricityUsageBtn"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="save-customer-btn"
+                >
+                    Save Daily Usage
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<!-- ELECTRICITY PURCHASE FORM -->
+<div class="electricity-modal" id="electricityModal">
+
+    <div class="customer-form-card">
+
+        <div class="customer-form-header">
+
+            <div>
+                <h2>Record Electricity</h2>
+
+                <p>
+                    Enter the electricity units purchased
+                    and the amount paid.
+                </p>
+            </div>
+
+            <button
+                type="button"
+                class="close-customer-form"
+                id="closeElectricityForm"
+            >
+                ×
+            </button>
+
+        </div>
+
+        <form id="electricityForm">
+
+            <div class="form-group">
+
+                <label for="electricityUnits">
+                    Units Purchased
+                </label>
+
+                <input
+                    type="number"
+                    id="electricityUnits"
+                    min="0.01"
+                    step="0.01"
+                    placeholder="Example: 14"
+                    required
+                >
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="electricityAmount">
+                    Amount Paid (TZS)
+                </label>
+
+                <input
+                    type="number"
+                    id="electricityAmount"
+                    min="1"
+                    placeholder="Example: 5000"
+                    required
+                >
+
+            </div>
+
+            <div class="customer-form-actions">
+
+                <button
+                    type="button"
+                    class="cancel-customer-btn"
+                    id="cancelElectricityBtn"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="save-customer-btn"
+                >
+                    Save Purchase
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<!-- ==========================================
+     CREDIT SALE FORM
+========================================== -->
+
+<div class="credit-modal" id="creditModal">
+
+    <div class="customer-form-card">
+
+        <div class="customer-form-header">
+
+            <div>
+                <h2>Sell on Credit</h2>
+                <p>Record water taken by a customer to pay later.</p>
+            </div>
+
+            <button
+                type="button"
+                class="close-customer-form"
+                id="closeCreditForm"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="creditSaleForm">
+
+            <div class="form-group">
+
+                <label for="creditCustomer">
+                    Customer
+                </label>
+
+                <select id="creditCustomer" required>
+
+                    <option value="">
+                        Select customer
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="creditWaterSize">
+                    Water Size
+                </label>
+
+                <select id="creditWaterSize" required>
+
+                    <option value="">
+                        Select water size
+                    </option>
+
+                    <option value="10">
+                        10 Litres — TZS 100
+                    </option>
+
+                    <option value="20">
+                        20 Litres — TZS 100
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="form-group">
+
+    <label for="creditQuantity">
+        Quantity
+    </label>
+
+    <input
+        type="number"
+        id="creditQuantity"
+        min="1"
+        value="1"
+        required
+    >
+
+</div>
+
+
+<div class="quick-quantity-buttons credit-quantity-buttons">
+
+    <button type="button" data-quantity="4">
+        4
+    </button>
+
+    <button type="button" data-quantity="6">
+        6
+    </button>
+
+    <button type="button" data-quantity="12">
+        12
+    </button>
+
+</div>
+
+
+<div class="quick-sale-summary">
+
+    <div>
+        <span>Total Litres</span>
+
+        <strong id="creditTotalLitres">
+            0 L
+        </strong>
+    </div>
+
+    <div>
+        <span>Total Amount</span>
+
+        <strong id="creditTotalAmount">
+            TZS 0
+        </strong>
+    </div>
+
+</div>
+
+
+            <div class="customer-form-actions">
+
+                <button
+                    type="button"
+                    class="cancel-customer-btn"
+                    id="cancelCreditBtn"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="save-customer-btn"
+                >
+                    Record Credit Sale
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<!-- ==========================================
+     RECEIVE PAYMENT FORM
+========================================== -->
+
+<div class="payment-modal" id="paymentModal">
+
+    <div class="customer-form-card">
+
+        <div class="customer-form-header">
+
+            <div>
+                <h2>Receive Payment</h2>
+                <p>Record payment toward a customer's outstanding debt.</p>
+            </div>
+
+            <button
+                type="button"
+                class="close-customer-form"
+                id="closePaymentForm"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="paymentForm">
+
+            <div class="form-group">
+
+                <label for="paymentCustomer">
+                    Customer
+                </label>
+
+                <select id="paymentCustomer" required>
+
+                    <option value="">
+                        Select customer
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="paymentAmount">
+                    Amount Paid (TZS)
+                </label>
+
+                <input
+                    type="number"
+                    id="paymentAmount"
+                    min="1"
+                    placeholder="Example: 500"
+                    required
+                >
+
+            </div>
+
+
+            <div class="customer-form-actions">
+
+                <button
+                    type="button"
+                    class="cancel-customer-btn"
+                    id="cancelPaymentBtn"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="save-customer-btn"
+                >
+                    Record Payment
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
