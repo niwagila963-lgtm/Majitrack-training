@@ -2,7 +2,7 @@
 // MAJITRACK SERVICE WORKER
 // ==========================================
 
-const CACHE_NAME = "majitrack-training-v4";
+const CACHE_NAME = "majitrack-training-v5";
 
 const APP_FILES = [
     "./",
